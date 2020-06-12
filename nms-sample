@@ -1,0 +1,27 @@
+import subprocess as sp
+from datetime import datetime
+import time
+
+
+from colorama import Fore
+
+pop = input("Enter the ip address: ")
+def ipcheck():
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    status,result = sp.getstatusoutput("ping -c1 -w2 " + str(pop))
+    if status == 0:
+        print(Fore.GREEN + current_time + " " + "System " + str(pop) + " is UP !")
+    else:
+        print(Fore.RED + current_time + " " + "System " + str(pop) + " is DOWN !")
+
+while True:
+    ipcheck()
+    time.sleep(30)
+
+
+"""
+Created on Fri Jun 12 13:34:02 2020
+@author: Vineeth Pokkavayalil
+"""
+
